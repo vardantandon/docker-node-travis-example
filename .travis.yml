@@ -1,0 +1,8 @@
+sudo: required
+
+services:
+    - docker
+
+script:
+    - docker build -t vardantandon/docker-node-travis-example .
+    - docker images vardantandon/docker-node-travis-example
