@@ -1,22 +1,16 @@
 sudo: required
-
 services:
   - docker
-
 env:
   global:
     - DOCKER_HUB_USER=vardantandon
     # DOCKER_HUB_PASSWORD
-    - secure: Cn6fz6PXudOpLsWVtAE6mwEmRq55Tpvw1kjZ/a9qzsXk0QKqhpFVETxXJlj8Cfp5pQmJAxNs3HLMgO3OASXuHeDX2GZtQLYFitA4hanaznu3n5pSPK19gopzfxhaYvZ/bj9sNido/quykBzQf9kqKmnRCZgP4dSpGs+KYqc0DwXgd/vm83iBqe7DmbMGEYqz3cpgp7oPW/dShdIRrE/vyiDhdtCwBhJRq7qQk5jrc0xzirrtFp52L2vSeOhixRBlGGNwk90qEvHs/bUgagE07cjci29w58uNpUD69d23cftsQsnY2/upe9Z8ccwsVTbbi0eM2m5C1dqti8g5J0wzO0LFr23byS8G9nISLAMgalp1nlNXg/cOO8clJW6i7FVEZxnhzyQLGAc97IZM+c9Z/vir3+38M8QWDShzftse4/iQp4YpAxkiQeOPEUYWolmFVZw/nZ9Aima9LaLsnzr3LfAPZhAMxKobWp6wNfe5f3uDZZ5xUVLlQbJQYB/YbNcRR1qq95WukqQYE0meKWgx8sJJBCm0Rpm9YvUTyJchByP/ieX1XpCxK8BGUyhuUpV1OZlkIU/anVt2JYhjfsKzDeilSu9iA2buX6GIhvFOHzDeTWVe+wE/O5xiOoOY4zzDkr12t3E09lI+53nwFn2kB+APbDaMGHiz7ttvfjxlIbw=
-
-
+    - secure: NwaVDn6Bwkk21u9URYq19f5U0wmAZJb6pTpXQLa88FXNl8Al9TwxeFKAlR0Qn4uhoLsZfQIg8DLmTF9fDFekcNwrqWbcL78jS4ugepihZniZBGa73xAIkuL7kh2/D6sdDX4znTOnPW9IwGUiltWp4F7omVQHBQELoPwmXsALOLo21lS/VmGqfeTomCY2wB0oaDQdAVBZpvVm4O3MCYSqWo6GMN8esETZ0RL9M4wG+ABFDTbBIwZ0ztO6uZZKmzFoX8IksPx1XiUkrwfqNX+U5/Wp2Kd0Rg6sXfvGoeCFHaEzq3BVPtXUE6RxGkVyjB3VWeoIdw913lRPW9nRPTOHXPkcJ3V81Ts2VE0r+zV2KE9I96BmKqOzASrICPSiivLXFBPrGnDB+VdRSc3j2L7KbdhdQfjvwz9B83G5KTqJTPa5IPy0ou/dmSIeNTNw4nmA7CosFvIXkmA7Mr8Ctv4kGby9sNLqdyrDCDv2x9Omh2kSn67U+W9/a1onrj18blK2jSAQht+/uuBQMQbLuNiyjbsxUIeUviZjQGjHd9Im0lSjBRUwe83AND+kCr6HG4drGT9MxRPsqLW1UPgwu6320V8v4DyHl8v0KCF98fWcxPyPwADCWO8phikEVoMfzXBSsLSpJdM96o2/wuug+YeQ9apC3RLBfEEam85KjrkDAfE=
 script:
   - docker build -t vardantandon/docker-node-travis-example .
   - docker images vardantandon/docker-node-travis-example
-
 before_deploy:
   - docker login -u "$DOCKER_HUB_USER" -p "$DOCKER_HUB_PASSWORD"
-
 deploy:
   provider: script
   script: docker push vardantandon/docker-node-travis-example
